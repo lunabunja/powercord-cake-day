@@ -32,14 +32,17 @@ module.exports = class Settings extends React.PureComponent {
     render() {
         return (
           <>
+            <SwitchItem value={this.props.getSetting('userProfileModals', true)} onChange={() => this.props.toggleSetting('userProfileModals')}>
+              Add cakes to user profile modals.
+            </SwitchItem>
+            <SwitchItem value={this.props.getSetting('membersList', true)} onChange={() => this.props.toggleSetting('membersList')}>
+              Add cakes to members list.
+            </SwitchItem>
             <SwitchItem value={this.props.getSetting('dms', true)} onChange={() => this.props.toggleSetting('dms')}>
               Add cakes to DM channels.
             </SwitchItem>
-            <SwitchItem value={this.props.getSetting('membersList', true)} onChange={() => this.props.toggleSetting('membersList')}>
-              Add cakes to members list
-            </SwitchItem>
             <SwitchItem value={this.props.getSetting('messages', true)} onChange={() => this.props.toggleSetting('messages')}>
-              Add cakes to messages
+              Add cakes to messages.
             </SwitchItem>
             <SwitchItem note="For debug purposes." value={this.props.getSetting('debug', false)} onChange={() => this.props.toggleSetting('debug')}>
               Add cakes without checking.
