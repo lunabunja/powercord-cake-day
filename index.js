@@ -134,7 +134,7 @@ module.exports = class CakeDay extends Plugin {
           }, []);
         }
 
-        if (_this.settings.get('debug', false) || (_this.settings.get('userProfileModals', true) && (users.getUser(this.props.user?.id)?.createdAt.getMonth() === new Date().getMonth() || users.getUser(this.props.user?.id)?.createdAt.getDate() === new Date().getDate()))) {
+        if (_this.settings.get('debug', false) || (_this.settings.get('userProfileModals', true) && (users.getUser(this.props.user?.id)?.createdAt.getMonth() === new Date().getMonth() && users.getUser(this.props.user?.id)?.createdAt.getDate() === new Date().getDate()))) {
           _this.log("Someone has a Cake Day! 🎉");
           res.props.children.push(React.createElement(Cake, { key: 'discord-cake-yaaay', clazz: 'cake-day-user-profile-modal' }));
         }
