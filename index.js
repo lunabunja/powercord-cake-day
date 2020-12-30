@@ -85,8 +85,8 @@ module.exports = class CakeDay extends Plugin {
     const users = await getModule(['getUsers']);
     const MessageHeader = await getModule(['MessageTimestamp']);
 
-    inject('cake-day-chat', MessageHeader, 'default', ([ { message: { author: { id: userId }, } } ], res) => {
-      if (!this.settings.get('debug', false) && (!users.getUser(userId) || !this.settings.get('messages', true) || (users.getUser(userId)?.createdAt.getMonth() !== new Date().getMonth() || users.getUser(userId)?.createdAt.getDate() !== new Date().getDate()))) {
+    inject('cake-day-chat', MessageHeader, 'default', ([ { message: { author: { discriminator, id: userId }, } } ], res) => {
+      if (!this.settings.get('debug', false) && (!users.getUser(userId) || !this.settings.get('messages', true) || discriminator === "0000" || (users.getUser(userId)?.createdAt.getMonth() !== new Date().getMonth() || users.getUser(userId)?.createdAt.getDate() !== new Date().getDate()))) {
         return res;
       }
 
